@@ -1,7 +1,7 @@
-const CACHE = 'montessori-v1';
+const CACHE = 'montessori-en-v1';
 const ASSETS = [
-  '/montessori-newest-mvp/',
-  '/montessori-newest-mvp/index.html'
+  '/Montessori-Companion-EN/',
+  '/Montessori-Companion-EN/index.html'
 ];
 
 self.addEventListener('install', e => {
@@ -19,7 +19,7 @@ self.addEventListener('activate', e => {
 });
 
 self.addEventListener('fetch', e => {
-  // API-Calls nie cachen
+  // Never cache API calls
   if (e.request.url.includes('workers.dev') || e.request.url.includes('anthropic')) return;
   e.respondWith(
     fetch(e.request).catch(() => caches.match(e.request))
